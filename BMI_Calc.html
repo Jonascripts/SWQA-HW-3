@@ -3,39 +3,6 @@
       <title>BMI Calculator</title>
       <link rel="stylesheet" type="text/css" href="styles.css"/>
       <script>
-         function heightfeetclicked()
-         {
-            var heightft;
-            heightft=document.getElementById('heightfeetcheck').value;
-            if (heightft != ""){
-               document.getElementById('heightfeeterr').innerHTML='Height (ft) (current: ' + heightft + '):';
-            }
-            else {
-               document.getElementById('heightfeeterr').innerHTML='<font color="red">Height (ft) (Required):</font>';
-            }
-         }
-         function heightinchesclicked()
-         {
-            var heightin;
-            heightin=document.getElementById('heightinchescheck').value;
-            if (heightin != ""){
-               document.getElementById('heightincheserr').innerHTML='Height (in) (current: ' + heightin + '):';
-            }
-            else {
-               document.getElementById('heightincheserr').innerHTML='<font color="red">Height (in) (Required):</font>';
-            }
-         }
-         function weightpoundsclicked()
-         {
-            var weightlb;
-            weightlb=document.getElementById('weightpoundscheck').value;
-            if (weightlb != ""){
-               document.getElementById('weightpoundserr').innerHTML='Weight (lbs) (current: ' + weightlb + '):';
-            }
-            else {
-               document.getElementById('weightpoundserr').innerHTML='<font color="red">Weight (lbs) (Required):</font>';
-            }
-         }
          function calculateBMI()
          {
             var heightft;
@@ -110,19 +77,16 @@
          <form>
             <b id="heightfeeterr">Height (ft):</b>
             <input type="text" id="heightfeetcheck"/>
-            <input type="button" value="Update Height (ft)" onClick="heightfeetclicked()" />
          </form>
          <li><p id="heightinches">the extra inches (no fractions of feet please)</p></li>
          <form>
             <b id="heightincheserr">Height (in):</b>
             <input type="text" id="heightinchescheck"/>
-            <input type="button" value="Update Height (in)" onClick="heightinchesclicked()" />
          </form>
          <li><p>your weight in pounds (round to the nearest whole pound)</p></li>
          <form>
             <b id="weightpoundserr">Weight (lbs):</b>
             <input type="text" id="weightpoundscheck"/>
-            <input type="button" value="Update Weight (lbs)" onClick="weightpoundsclicked()" />
          </form>
       </ul>
       <p id="BMIresult">The system is still being built. Please try again later.</p>
