@@ -39,10 +39,33 @@
          function calculateBMI()
          {
             var heightft;
+            heightft=document.getElementById('heightfeetcheck').value;
+            if (heightft != ""){
+               document.getElementById('heightfeeterr').innerHTML='Height (ft) (current: ' + heightft + '):';
+            }
+            else {
+               document.getElementById('heightfeeterr').innerHTML='<font color="red">Height (ft) (Required):</font>';
+            }
             heightft=parseInt(document.getElementById('heightfeetcheck').value);
+
             var heightin;
+            heightin=document.getElementById('heightinchescheck').value;
+            if (heightin != ""){
+               document.getElementById('heightincheserr').innerHTML='Height (in) (current: ' + heightin + '):';
+            }
+            else {
+               document.getElementById('heightincheserr').innerHTML='<font color="red">Height (in) (Required):</font>';
+            }
             heightin=parseInt(document.getElementById('heightinchescheck').value);
+
             var weightlb;
+            weightlb=document.getElementById('weightpoundscheck').value;
+            if (weightlb != ""){
+               document.getElementById('weightpoundserr').innerHTML='Weight (lbs) (current: ' + weightlb + '):';
+            }
+            else {
+               document.getElementById('weightpoundserr').innerHTML='<font color="red">Weight (lbs) (Required):</font>';
+            }
             weightlb=parseInt(document.getElementById('weightpoundscheck').value);
 
             var BMI;
@@ -59,6 +82,21 @@
             var BMIround;
             BMIround=BMI.toFixed(1);
             document.getElementById('BMIresult').innerHTML='Your BMI is: ' + BMIround;
+
+            if (BMI < (18.5)){
+               document.getElementById('BMIrange').innerHTML='Your BMI is considered underweight.';
+            }
+            else if ((BMI >= (18.5)) && (BMI < 25)){
+               document.getElementById('BMIrange').innerHTML='Your BMI is considered normal.';
+            }
+            else if ((BMI >= 25) && (BMI < 30)){
+               document.getElementById('BMIrange').innerHTML='Your BMI is considered overweight.';
+            }
+            else if (BMI >= 30){
+               document.getElementById('BMIrange').innerHTML='Your BMI is considered obese.';
+            }
+            else {
+            }
          }
       </script>
    </head>
@@ -88,6 +126,7 @@
          </form>
       </ul>
       <p id="BMIresult">The system is still being built. Please try again later.</p>
+      <p id="BMIrange"></p>
       <form>
          <input type="button" value="Calculate BMI" onClick="calculateBMI()" />
       </form>
