@@ -2,17 +2,97 @@
    <head>
       <title>BMI Calculator</title>
       <link rel="stylesheet" type="text/css" href="styles.css"/>
+      <script>
+         function calculateBMI()
+         {
+            var heightft;
+            heightft=document.getElementById('heightfeetcheck').value;
+            if (heightft != ""){
+               document.getElementById('heightfeeterr').innerHTML='Height (ft) (current: ' + heightft + '):';
+            }
+            else {
+               document.getElementById('heightfeeterr').innerHTML='<font color="red">Height (ft) (Required):</font>';
+            }
+            heightft=parseInt(document.getElementById('heightfeetcheck').value);
+
+            var heightin;
+            heightin=document.getElementById('heightinchescheck').value;
+            if (heightin != ""){
+               document.getElementById('heightincheserr').innerHTML='Height (in) (current: ' + heightin + '):';
+            }
+            else {
+               document.getElementById('heightincheserr').innerHTML='<font color="red">Height (in) (Required):</font>';
+            }
+            heightin=parseInt(document.getElementById('heightinchescheck').value);
+
+            var weightlb;
+            weightlb=document.getElementById('weightpoundscheck').value;
+            if (weightlb != ""){
+               document.getElementById('weightpoundserr').innerHTML='Weight (lbs) (current: ' + weightlb + '):';
+            }
+            else {
+               document.getElementById('weightpoundserr').innerHTML='<font color="red">Weight (lbs) (Required):</font>';
+            }
+            weightlb=parseInt(document.getElementById('weightpoundscheck').value);
+
+            var BMI;
+            var tempheight;
+            tempheight=(heightft*12) + heightin;
+
+            var tempweight;
+            tempweight=(weightlb*(0.45));
+            tempheight=(tempheight*(0.025));
+
+            tempheight=(tempheight*tempheight);
+
+            BMI=(tempweight/tempheight);
+            var BMIround;
+            BMIround=BMI.toFixed(1);
+            document.getElementById('BMIresult').innerHTML='Your BMI is: ' + BMIround;
+
+            if (BMI < (18.5)){
+               document.getElementById('BMIrange').innerHTML='Your BMI is considered underweight.';
+            }
+            else if ((BMI >= (18.5)) && (BMI < 25)){
+               document.getElementById('BMIrange').innerHTML='Your BMI is considered normal.';
+            }
+            else if ((BMI >= 25) && (BMI < 30)){
+               document.getElementById('BMIrange').innerHTML='Your BMI is considered overweight.';
+            }
+            else if (BMI >= 30){
+               document.getElementById('BMIrange').innerHTML='Your BMI is considered obese.';
+            }
+            else {
+            }
+         }
+      </script>
    </head>
 
    <body bgcolor="black" text="lightgrey">
-      <center><p><b><h2>BMI Calculator</h2></b></p></center>
+      <center><p id="start"><b><h2>BMI Calculator</h2></b></p></center>
       <p>Welcome to the very basic but still very nice and not buggy at all <i>BMI Calculator System</i> (patents pending).</p>
       <p>To calculate your BMI, enter:</p>
       <ul>
-         <li><p>your height in feet</p></li>
-         <li><p>the extra inches (no fractions of feet please)</p></li>
-         <li><p>your height in pounds (round to the nearest whole pound)</p></li>
+         <li><p id="heightfeet">your height in feet</p></li>
+         <form>
+            <b id="heightfeeterr">Height (ft):</b>
+            <input type="text" id="heightfeetcheck"/>
+         </form>
+         <li><p id="heightinches">the extra inches (no fractions of feet please)</p></li>
+         <form>
+            <b id="heightincheserr">Height (in):</b>
+            <input type="text" id="heightinchescheck"/>
+         </form>
+         <li><p>your weight in pounds (round to the nearest whole pound)</p></li>
+         <form>
+            <b id="weightpoundserr">Weight (lbs):</b>
+            <input type="text" id="weightpoundscheck"/>
+         </form>
       </ul>
-      <p>The system is still being built. Please try again later.</p>
+      <p id="BMIresult">The system is still being built. Please try again later.</p>
+      <p id="BMIrange"></p>
+      <form>
+         <input type="button" value="Calculate BMI" onClick="calculateBMI()" />
+      </form>
    </body>
 </html>
